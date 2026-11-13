@@ -1,0 +1,722 @@
+:root {
+    --black:#111111;
+    --graphite:#242424;
+    --gray:#e5e5e5;
+    --white:#fff;
+    --muted:#767676;
+    --line:#d2d2d2;
+    --gutter:clamp(22px,5vw,88px)
+}
+*,*::before,*::after {
+    box-sizing:border-box
+}
+html {
+    scroll-behavior:smooth;
+    scroll-padding-top:32px
+}
+body {
+    margin:0;
+    background:var(--white);
+    color:var(--black);
+    font-family:Arial,Helvetica,sans-serif;
+    -webkit-font-smoothing:antialiased
+}
+a {
+    color:inherit;
+    text-decoration:none
+}
+button,input,select,textarea {
+    font:inherit
+}
+button,a,input,textarea,select,summary {
+    -webkit-tap-highlight-color:transparent
+}
+button {
+    border:0
+}
+img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    background:#242424;
+    color:#ddd;
+    font-size:14px;
+    font-weight:400;
+    line-height:1.6
+}
+figure,p,h1,h2,h3 {
+    margin:0
+}
+figure {
+    min-width:0
+}
+ul {
+    margin:0;
+    padding:0;
+    list-style:none
+}
+::selection {
+    background:#c6c6c6;
+    color:#111
+}
+:focus-visible {
+    outline:2px solid #888;
+    outline-offset:6px
+}
+section[id] {
+    scroll-margin-top:24px
+}
+.container {
+    width:100%;
+    max-width:1600px;
+    margin-inline:auto;
+    padding-inline:var(--gutter)
+}
+.section {
+    padding-block:112px
+}
+.eyebrow {
+    font-size:11px;
+    line-height:1.5;
+    letter-spacing:.14em;
+    font-weight:700
+}
+.muted {
+    color:var(--muted)
+}
+h1,h2,h3 {
+    font-weight:700
+}
+h2 {
+    font-size:clamp(32px,4.15vw,64px);
+    line-height:1.04;
+    letter-spacing:-.045em
+}
+.lead {
+    font-size:clamp(22px,2.1vw,30px);
+    line-height:1.25;
+    letter-spacing:-.025em
+}
+.button {
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:42px;
+    min-height:58px;
+    padding:19px 24px;
+    font-size:13px;
+    font-weight:700;
+    transition:background .2s,color .2s
+}
+.button span {
+    font-size:22px;
+    font-weight:400;
+    line-height:1
+}
+.button--dark {
+    background:#111;
+    color:white
+}
+.button--dark:hover {
+    background:#383838
+}
+.button:disabled {
+    background:#e5e5e5;
+    color:#777;
+    cursor:not-allowed
+}
+
+/* ==========================================================
+   Бренд (используется в сайдбаре и на экране входа)
+   ========================================================== */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 46px;
+    min-height: 46px;
+    flex-shrink: 0;
+}
+.brand .brand__text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 0;
+    font-size: inherit;
+    letter-spacing: normal;
+    font-weight: 400;
+}
+.brand .brand__name {
+    display: block;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -.03em;
+}
+.brand .brand__tagline {
+    display: block;
+    margin: 0;
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: .16em;
+    color: #aaa;
+    white-space: nowrap;
+}
+.brand__logo {
+    display: block;
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+}
+
+/* ==========================================================
+   Экран входа / «Выйти» (admin.html)
+   ========================================================== */
+body.admin-page {
+    background: #f0f0ee;
+    font-size: 14px;
+}
+.admin-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.admin-login[hidden],
+.admin[hidden] {
+    display: none;
+}
+.admin-login__card {
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    padding: 48px 40px 40px;
+}
+.admin-login__brand {
+    margin-bottom: 36px;
+}
+.admin-login__card .eyebrow {
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+.admin-login__card h1 {
+    font-size: clamp(26px, 3vw, 34px);
+    letter-spacing: -.04em;
+    margin-bottom: 12px;
+}
+.admin-login__note {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 28px;
+}
+.admin-login__submit {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 24px;
+    background: var(--black);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    transition: background .2s;
+}
+.admin-login__submit span {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+.admin-login__submit:hover {
+    background: #383838;
+}
+
+/* ==========================================================
+   Админ-панель (admin.html)
+   ========================================================== */
+.admin dl,
+.admin dd {
+    margin: 0;
+}
+.admin .muted {
+    font-size: 12px;
+}
+.admin .eyebrow {
+    color: var(--muted);
+}
+.admin .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.admin {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* Боковая панель */
+.admin .sidebar {
+    background: var(--black);
+    color: #fff;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+.admin .sidebar__nav {
+    display: grid;
+    gap: 4px;
+}
+.admin .sidebar__nav a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 14px;
+    font-size: 13px;
+    color: #ccc;
+}
+.admin .sidebar__nav a.is-active {
+    background: #fff;
+    color: var(--black);
+    font-weight: 700;
+}
+.admin .badge {
+    background: #383838;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 7px;
+    font-weight: 700;
+}
+.admin .is-active .badge {
+    background: var(--black);
+}
+.admin .sidebar__foot {
+    margin-top: auto;
+    display: grid;
+    gap: 14px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #999;
+}
+
+/* Кнопки */
+.admin .btn {
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 0;
+    cursor: pointer;
+}
+.admin .btn--dark {
+    background: var(--black);
+    color: #fff;
+}
+.admin .btn--ghost {
+    background: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+}
+
+/* Основная область */
+.admin .main {
+    padding: 40px clamp(20px, 3vw, 48px);
+    min-width: 0;
+}
+.admin .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.admin .topbar h1 {
+    font-size: clamp(32px, 3.5vw, 48px);
+    letter-spacing: -.045em;
+    margin-top: 10px;
+}
+.admin .topbar__tools {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.admin .search input {
+    width: 300px;
+    max-width: 100%;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-size: 13px;
+}
+.admin .notice {
+    background: #fff;
+    border-left: 3px solid var(--black);
+    padding: 14px 18px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+/* Сводка */
+.admin .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.admin .stat {
+    background: #fff;
+    padding: 20px 22px;
+    display: grid;
+    gap: 12px;
+}
+.admin .stat__label {
+    font-size: 9px;
+    letter-spacing: .13em;
+    color: var(--muted);
+    font-weight: 700;
+}
+.admin .stat strong {
+    font-size: 36px;
+    letter-spacing: -.04em;
+    font-weight: 700;
+}
+
+/* Фильтры */
+.admin .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.admin .chip,
+.admin .select {
+    min-height: 38px;
+    padding: 0 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--black);
+    cursor: pointer;
+}
+.admin .chip.is-active {
+    background: var(--black);
+    color: #fff;
+    border-color: var(--black);
+}
+.admin .select {
+    margin-left: auto;
+}
+
+/* Таблица и карточка */
+.admin .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 20px;
+    align-items: start;
+}
+.admin .table-wrap {
+    background: #fff;
+    overflow-x: auto;
+}
+.admin .table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+}
+.admin .table th {
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: .13em;
+    color: var(--muted);
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    font-weight: 700;
+}
+.admin .table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    line-height: 1.5;
+    vertical-align: top;
+}
+.admin .table tr:last-child td {
+    border-bottom: 0;
+}
+.admin .table tr.is-selected td {
+    background: #f7f7f5;
+}
+.admin .table tr.is-selected td:first-child {
+    box-shadow: inset 3px 0 0 var(--black);
+}
+.admin .table tbody tr[data-id] {
+    cursor: pointer;
+}
+.admin .table tbody tr[data-id]:hover td {
+    background: #fafaf8;
+}
+.admin .table .empty-row td {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+.admin .table .empty-row strong {
+    display: block;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin-bottom: 6px;
+}
+.admin .table .empty-row p {
+    margin: 0 auto;
+    max-width: 320px;
+}
+.admin .status {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 10px;
+    letter-spacing: .04em;
+    white-space: nowrap;
+}
+.admin .status--new {
+    background: var(--black);
+    color: #fff;
+}
+.admin .status--work {
+    background: #e5e5e5;
+    color: var(--black);
+}
+.admin .status--done {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--line);
+}
+
+/* Карточка заявки */
+.admin .detail {
+    background: #fff;
+    padding: 28px;
+    position: sticky;
+    top: 24px;
+}
+.admin .detail__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.admin .detail h2 {
+    font-size: 26px;
+    letter-spacing: -.035em;
+    margin-bottom: 22px;
+}
+.admin .detail__list > div {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+}
+.admin .detail__list dt {
+    font-size: 9px;
+    letter-spacing: .13em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+.admin .detail__list dd {
+    font-size: 14px;
+}
+.admin .detail__message {
+    border-top: 1px solid var(--line);
+    padding: 14px 0 18px;
+    display: grid;
+    gap: 10px;
+}
+.admin .detail__message p:last-child {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #555;
+}
+.admin .detail__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+.admin .detail__actions .btn {
+    flex: 1;
+}
+
+/* Пустое состояние карточки */
+.admin .empty-state {
+    padding: 20px 4px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+.admin .empty-state strong {
+    display: block;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin-bottom: 6px;
+}
+.admin .empty-state p {
+    margin: 0 auto;
+    max-width: 320px;
+}
+
+/* Переключение разделов */
+.admin .view[hidden] {
+    display: none;
+}
+
+/* ==========================================================
+   Адаптив админки
+   ========================================================== */
+@media (max-width: 1100px) {
+    .admin .layout {
+        grid-template-columns: 1fr;
+    }
+    .admin .detail {
+        position: static;
+    }
+}
+@media (max-width: 800px) {
+    .admin {
+        grid-template-columns: 1fr;
+    }
+    .admin .sidebar {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+    .admin .sidebar__nav {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
+        order: 3;
+    }
+    .admin .sidebar__nav a {
+        white-space: nowrap;
+        gap: 10px;
+    }
+    .admin .sidebar__foot {
+        margin: 0 0 0 auto;
+    }
+    .admin .sidebar__foot p {
+        display: none;
+    }
+    .admin .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    .admin .select {
+        margin-left: 0;
+    }
+    .admin .topbar__tools {
+        width: 100%;
+    }
+    .admin .search input {
+        width: 100%;
+    }
+}
+@media (max-width: 540px) {
+    .admin-login {
+        padding: 16px;
+    }
+    .admin-login__card {
+        padding: 32px 24px 28px;
+    }
+    .admin .main {
+        padding: 24px 16px;
+    }
+    .admin .topbar h1 {
+        font-size: 28px;
+    }
+    .admin .stats {
+        gap: 10px;
+    }
+    .admin .stat {
+        padding: 16px 18px;
+    }
+    .admin .stat strong {
+        font-size: 28px;
+    }
+    .admin .filters {
+        gap: 6px;
+    }
+    .admin .chip,
+    .admin .select {
+        font-size: 11px;
+        padding: 0 12px;
+    }
+    .admin .detail {
+        padding: 22px 18px;
+    }
+    .admin .detail h2 {
+        font-size: 22px;
+    }
+    .admin .btn {
+        font-size: 11px;
+        padding: 0 16px;
+    }
+    .brand .brand__name {
+        font-size: 21px;
+    }
+    .brand .brand__tagline {
+        font-size: 7px;
+        letter-spacing: .12em;
+    }
+    .brand__logo {
+        width: 42px;
+        height: 42px;
+    }
+}
+@media (max-width: 380px) {
+    .brand {
+        gap: 10px;
+    }
+    .brand .brand__tagline {
+        font-size: 6px;
+        letter-spacing: .08em;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,*::before,*::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
